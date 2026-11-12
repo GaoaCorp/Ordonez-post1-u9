@@ -34,6 +34,9 @@ class CitaReminderServiceImplTest {
     @Mock
     private ReminderChannel reminderChannelMock;
 
+    @Mock
+    private ReminderChannel canalUrgenteMock;
+
     // Fake, no Mock: Clock.fixed(...) es una implementación real y completa de
     // java.time.Clock; LocalDateTime.now(clock) funciona igual que en producción,
     // solo que con el instante congelado.
@@ -44,8 +47,8 @@ class CitaReminderServiceImplTest {
 
     @BeforeEach
     void setUp() {
-        citaReminderService =
-            new CitaReminderServiceImpl(citaRepository, reminderChannelFactory, clockFijo);
+        citaReminderService = new CitaReminderServiceImpl(
+            citaRepository, reminderChannelFactory, canalUrgenteMock, clockFijo);
     }
 
     @Test
